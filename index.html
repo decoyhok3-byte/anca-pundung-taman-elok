@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semangat Anca!</title>
+    <title>semangat bre mulai kisah baru dikit lagi!</title>
     <style>
         body {
             background-color: #000;
@@ -15,79 +15,115 @@
             margin: 0;
             overflow: hidden;
             font-family: 'Arial', sans-serif;
-            color: white;
         }
 
-        .rose-container {
+        /* Desain Mawar CSS Murni */
+        .rose-wrapper {
             position: relative;
+            width: 100px;
+            height: 100px;
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Ini yang bikin mawar jadi cantik & nyata */
-        .rose-img {
-            width: 250px;
-            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+        .rose-petals {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.05); }
+        .rose-petals > div {
+            position: absolute;
+            background: #ff4d4d; /* Warna senada kelopak jatuh */
+            border-radius: 50% 50% 10% 80%;
+            transform-origin: bottom right;
+            box-shadow: inset 0 0 10px #8b0000;
         }
 
-        .message {
-            text-align: center;
-            margin-top: 20px;
+        /* Layer Kelopak Mawar */
+        .rose-petals div:nth-child(1) { width: 40px; height: 40px; transform: rotate(0deg); top: 30px; left: 30px; }
+        .rose-petals div:nth-child(2) { width: 40px; height: 40px; transform: rotate(72deg); top: 30px; left: 30px; }
+        .rose-petals div:nth-child(3) { width: 40px; height: 40px; transform: rotate(144deg); top: 30px; left: 30px; }
+        .rose-petals div:nth-child(4) { width: 40px; height: 40px; transform: rotate(216deg); top: 30px; left: 30px; }
+        .rose-petals div:nth-child(5) { width: 40px; height: 40px; transform: rotate(288deg); top: 30px; left: 30px; }
+        
+        .center-bud {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #8b0000;
+            border-radius: 50%;
+            top: 38px;
+            left: 38px;
+            box-shadow: 0 0 5px #000;
         }
 
-        h1 {
-            font-size: 1.6rem;
-            text-shadow: 0 0 10px #ff0000;
-            margin: 10px 0;
+        .stem {
+            width: 4px;
+            height: 120px;
+            background: #2d5a27;
+            margin: -5px auto 0;
+            border-radius: 2px;
         }
 
-        p {
-            color: #ffcccc;
-            font-style: italic;
-        }
-
-        /* Kelopak mawar jatuh biar estetik */
-        .petal {
+        /* Kelopak Jatuh (Warna dan Tone Sama) */
+        .falling-petal {
             position: absolute;
             background: #ff4d4d;
             border-radius: 150% 0 150% 0;
-            opacity: 0.7;
+            opacity: 0.8;
+            pointer-events: none;
             animation: fall linear infinite;
         }
 
         @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); }
+            to { transform: translateY(110vh) rotate(360deg); }
         }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 25px;
+            color: white;
+            z-index: 10;
+        }
+
+        h1 { font-size: 1.5rem; text-shadow: 0 0 10px #ff0000; margin: 0; }
+        p { color: #ffcccc; font-style: italic; font-size: 0.9rem; margin-top: 8px; }
+
     </style>
 </head>
 <body>
 
-    <div class="rose-container">
-        <img src="https://www.pngmart.com/files/1/Red-Rose-Flower-PNG.png" class="rose-img" alt="Mawar Merah">
+    <div class="rose-wrapper">
+        <div class="rose-petals">
+            <div></div><div></div><div></div><div></div><div></div>
+            <div class="center-bud"></div>
+        </div>
     </div>
+    <div class="stem"></div>
 
     <div class="message">
-        <h1>Anca Kabupaten Nyebelin</h1>
-        <p>Wleeee semangat lat sertijabnya! 🌹</p>
+        <h1>anca kabupaten nyebelin, tp kadang baik walau suka nyubit aja sama noel perut. kuat kuat lat sertijabnya, belajar yg rajin, btw hbd aing org pertama yg ngucapin</h1>
+        <p>thank u yaaa udah nasehatin buat istirahat juga</p>
     </div>
 
     <script>
         function createPetal() {
             const petal = document.createElement('div');
-            petal.classList.add('petal');
+            petal.classList.add('falling-petal');
             petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.width = Math.random() * 15 + 10 + 'px';
+            petal.style.width = Math.random() * 8 + 8 + 'px';
             petal.style.height = petal.style.width;
             petal.style.top = '-20px';
             petal.style.animationDuration = Math.random() * 3 + 2 + 's';
             document.body.appendChild(petal);
             setTimeout(() => petal.remove(), 5000);
         }
-        setInterval(createPetal, 300);
+        setInterval(createPetal, 250);
     </script>
 </body>
 </html>
